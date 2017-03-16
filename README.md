@@ -4,6 +4,8 @@
 * 单页面路由跳转
 * vuex处理弹窗事件
 * vuex处理中英语言
+### 截图如下
+
 <img src="./img1.png" alt="demo" width="100%" />
 
 ```javascript
