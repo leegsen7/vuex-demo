@@ -2,15 +2,18 @@
 	<div class="alert-main" v-if="show">
 		<div class="alert-main-div border-box">
 			<div>
-				{{alertText}}
+				{{alertLangText}}
 			</div>
 			<div class="alert-button-group">
 				<div class="alert-single-button" v-if="alertType == 'single'">
-					<button class="btn width100" @click="cancelEvent">确定</button>
+					<button v-if="langId == 0" class="btn width100" @click="cancelEvent">确定</button>
+					<button v-else class="btn width100" @click="cancelEvent">Confirm</button>
 				</div>
 				<div class="alert-double-button" v-if="alertType == 'double'">
-					<button class="btn width40 lefted" @click="confirmEvent">确定</button>
-					<button class="btn width40 righted" @click="cancelEvent">取消</button>
+					<button v-if="langId == 0" class="btn width40 lefted" @click="confirmEvent">确定</button>
+					<button v-else class="btn width40 lefted" @click="confirmEvent">Confirm</button>
+					<button v-if="langId == 0" class="btn width40 righted" @click="cancelEvent">取消</button>
+					<button v-else class="btn width40 righted" @click="cancelEvent">Cancel</button>
 				</div>
 			</div>
 		</div>
@@ -31,7 +34,7 @@
 }
 .alert-main-div{
 	position: absolute;
-	width:200px;
+	width:300px;
 	top:50%;
 	left:50%;
 	transform:translate(-50%,-50%);
@@ -71,6 +74,9 @@
 .alert-button-group{
 	margin-top: 10px;
 }
+.alert-double-button{
+	overflow: hidden;
+}
 </style>
 <script>
 import {changeAlert} from "../action/uiAction";
@@ -78,10 +84,12 @@ import {changeAlert} from "../action/uiAction";
 export default{
 	vuex:{
 		getters:{
+			langId:({lang}) => lang.langId,
 			show:({ui}) => ui.alert,
 			alertText:({ui}) => ui.alertText,
 			alertType:({ui}) => ui.alertType,
 			alertDealEvent:({ui}) => ui.alertDealEvent,
+
 		},
 		actions:{
 			changeAlert
@@ -90,6 +98,19 @@ export default{
 	data(){
 		return {
 
+		}
+	},
+	computed:{
+		'alertLangText': function(){
+			if (typeof this.alertText == 'string'){
+				return this.alertText;
+			}
+			else if (this.langId == 0){
+				return this.alertText ? this.alertText.zh : null;
+			}
+			else if (this.langId == 1){
+				return this.alertText ? this.alertText.en : null;
+			}
 		}
 	},
 	methods:{

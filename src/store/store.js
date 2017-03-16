@@ -1,6 +1,7 @@
 import vue from "vue";
 import vuex from "vuex";
-import ui from "./uiStore";
+import ui from "./modules/uiStore";
+import lang from "./modules/langStore";
 
 vue.use(vuex);
 
@@ -18,7 +19,8 @@ const mutations = {
 export default new vuex.Store({
 	state,
 	modules:{
-		ui
+		ui,
+		lang
 	},
 	mutations
 })

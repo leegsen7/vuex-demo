@@ -1,8 +1,8 @@
 <template>
 <div>
-	<div>这是home页面</div><br>
+	<div>{{lang.home_page_title}}</div><br>
 	<input type="text" v-model="pageNum" />
-	<button @click="checkNum">去page页面</button>
+	<button @click="checkNum">{{lang.home_to_page}}</button>
 </div>
 </template>
 <style scoped>
@@ -16,6 +16,9 @@ import {changeAlert} from "../action/uiAction";
 
 export default{
 	vuex:{
+		getters:{
+			lang:({lang}) => lang.lang
+		},
 		actions:{
 			changeAlert
 		}
@@ -27,13 +30,11 @@ export default{
 	},
 	methods:{
 		checkNum(){
-			let self = this;
-
-			if (isNaN(self.pageNum) || self.pageNum <= 0){
-				self.changeAlert(true,"请填写准确数字");
+			if (isNaN(this.pageNum) || this.pageNum <= 0){
+				this.changeAlert(true,{zh:"请填写准确数字",en:'Please write true number'});
 			}
 			else {
-				self.changeAlert(true,"将去到page页面?","double",self.toPage);
+				this.changeAlert(true,{zh:"将去到page页面?",en:'Will go to Page page?'},"double",this.toPage);
 			}
 		},
 		toPage(){

@@ -78,17 +78,17 @@
 		},
 		'/about': {
 			name: 'about',
-			component: __webpack_require__(28),
+			component: __webpack_require__(29),
 			headTitle: 'vue demo about页'
 		},
 		'/home': {
 			name: 'home',
-			component: __webpack_require__(35),
+			component: __webpack_require__(36),
 			headTitle: 'vue demo home页'
 		},
 		'/page': {
 			name: 'page',
-			component: __webpack_require__(40),
+			component: __webpack_require__(41),
 			headTitle: 'page 页面'
 		}
 	});
@@ -13304,7 +13304,7 @@
 
 	exports.default = {
 		components: {
-			'mHeader': __webpack_require__(9),
+			'mHeader': __webpack_require__(11),
 			"mAlert": __webpack_require__(19)
 		},
 		store: _store2.default
@@ -13342,6 +13342,10 @@
 
 	var _uiStore2 = _interopRequireDefault(_uiStore);
 
+	var _langStore = __webpack_require__(9);
+
+	var _langStore2 = _interopRequireDefault(_langStore);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_vue2.default.use(_vuex2.default);
@@ -13360,7 +13364,8 @@
 	exports.default = new _vuex2.default.Store({
 		state: state,
 		modules: {
-			ui: _uiStore2.default
+			ui: _uiStore2.default,
+			lang: _langStore2.default
 		},
 		mutations: mutations
 	});
@@ -13980,10 +13985,82 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _language = __webpack_require__(10);
+
+	var _language2 = _interopRequireDefault(_language);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var state = {
+		langId: 0, // 0 代表中文
+		lang: _language2.default.zh
+	};
+
+	var mutations = {
+		CHANGE_LANG: function CHANGE_LANG(state, index) {
+			if (index == state.langId) return false;
+			state.langId = index;
+			index == 0 ? state.lang = _language2.default.zh : state.lang = _language2.default.en;
+		}
+	};
+
+	exports.default = {
+		state: state,
+		mutations: mutations
+	};
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+			value: true
+	});
+	exports.default = {
+			"zh": {
+					"index_page": "这是默认的首页",
+
+					"home_page": 'home 页面',
+					"home_page_title": "这是home页面",
+					"home_to_page": "去到page页面",
+
+					"about_page": "about 页面",
+					"about_page_title": '这是about页面',
+					"about_calc": '这里有个计数器',
+
+					"page_page": "page页面的参数："
+			},
+			"en": {
+					"index_page": "This's index page",
+
+					"home_page": 'Home Page',
+					"home_page_title": "This's Home Page",
+					"home_to_page": "To go to Page page",
+
+					"about_page": "About Page",
+					"about_page_title": 'This is a About Page',
+					"about_calc": "There's a calc",
+
+					"page_page": "The arg of Page page"
+			}
+	};
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(10)
-	__vue_script__ = __webpack_require__(14)
+	__webpack_require__(12)
+	__vue_script__ = __webpack_require__(16)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
@@ -14013,16 +14090,16 @@
 	})()}
 
 /***/ },
-/* 10 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(11);
+	var content = __webpack_require__(13);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
+	var update = __webpack_require__(15)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -14039,21 +14116,21 @@
 	}
 
 /***/ },
-/* 11 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(12)();
+	exports = module.exports = __webpack_require__(14)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\nh1 span[_v-68dead14]{\r\n\tcursor: pointer;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\nh1 span[_v-68dead14]{\r\n\tcursor: pointer;\r\n}\r\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/*
@@ -14109,7 +14186,7 @@
 
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -14331,7 +14408,7 @@
 
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14339,31 +14416,32 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	// <template>
-	// <div>
-	// 	<mouse-show>
-	// 		<h1><span class="link-span" v-link="{path:'/'}">Hello App!</span>{{myNum}}</h1>
-	// 	</mouse-show>
-	//
-	// 	<p>  
-	// 		<a v-link="{ path: '/home' }">home界面 </a>  
-	// 		<a v-link="{ path: '/about' }">about界面</a>  
-	// 	</p> 
-	// </div>
-	// </template>
-	//
-	// <script>
+
+	var _langAction = __webpack_require__(17);
 
 	exports.default = {
 		vuex: {
 			getters: {
+				langId: function langId(_ref) {
+					var lang = _ref.lang;
+					return lang.langId;
+				},
+				lang: function lang(_ref2) {
+					var _lang = _ref2.lang;
+					return _lang.lang;
+				},
 				myNum: function myNum(state) {
 					return state.count;
 				}
+			},
+			actions: {
+				changeLang: _langAction.changeLang
 			}
 		},
-		components: {
-			"mouseShow": __webpack_require__(15)
+		methods: {
+			toChangeLang: function toChangeLang(index) {
+				this.changeLang(index);
+			}
 		}
 	};
 	// </script>
@@ -14373,95 +14451,45 @@
 	// 	cursor: pointer;
 	// }
 	// </style>
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(16)
-	if (__vue_script__ &&
-	    __vue_script__.__esModule &&
-	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] src\\components\\mouseShow.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(17)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-14b2820b/mouseShow.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
 	// <template>
 	// <div>
-	// 	<div @mouseover="overEvent($event)" @mouseout="outEvent">
-	// 		<slot></slot>
-	// 	</div>
-	// 	<div v-if="isMouse">
-	// 		{{className}}
-	// 	</div>
+	// 	<h1>
+	// 		<span class="link-span" v-link="{path:'/'}" title="首页">Hello App!</span>{{myNum}}
+	// 		<span style="margin-left:200px;">
+	// 			<span v-if="langId == 1" @click="toChangeLang(0)">中文</span>
+	// 			<span v-else @click="toChangeLang(1)">English</span>
+	// 		</span>
+	// 	</h1>
+	//
+	// 	<p>  
+	// 		<a v-link="{ path: '/home' }">{{lang.home_page}}</a>  
+	// 		<a v-link="{ path: '/about' }">{{lang.about_page}}</a>
+	//
+	// 	</p> 
 	// </div>
 	// </template>
 	//
 	// <script>
-	exports.default = {
-		data: function data() {
-			return {
-				className: '',
-				isMouse: false
-			};
-		},
-
-		methods: {
-			overEvent: function overEvent($event) {
-				this.isMouse = true;
-				var src = $event.target || $event.srcElement;
-				this.className = src.className;
-			},
-			outEvent: function outEvent() {
-				this.isMouse = false;
-			}
-		}
-	};
-	// </script>
 
 /***/ },
 /* 17 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<div>\r\n\t<div @mouseover=\"overEvent($event)\" @mouseout=\"outEvent\">\r\n\t\t<slot></slot>\r\n\t</div>\r\n\t<div v-if=\"isMouse\">\r\n\t\t{{className}}\r\n\t</div>\r\n</div>\r\n";
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var changeLang = exports.changeLang = function changeLang(_ref, index) {
+	  var dispatch = _ref.dispatch;
+	  return dispatch('CHANGE_LANG', index);
+	};
 
 /***/ },
 /* 18 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div _v-68dead14=\"\">\n\t<mouse-show _v-68dead14=\"\">\n\t\t<h1 _v-68dead14=\"\"><span class=\"link-span\" v-link=\"{path:'/'}\" _v-68dead14=\"\">Hello App!</span>{{myNum}}</h1>\n\t</mouse-show>\n\t\n\t<p _v-68dead14=\"\">  \n\t\t<a v-link=\"{ path: '/home' }\" _v-68dead14=\"\">home界面 </a>  \n\t\t<a v-link=\"{ path: '/about' }\" _v-68dead14=\"\">about界面</a>  \n\t</p> \n</div>\n";
+	module.exports = "\n<div _v-68dead14=\"\">\n\t<h1 _v-68dead14=\"\">\n\t\t<span class=\"link-span\" v-link=\"{path:'/'}\" title=\"首页\" _v-68dead14=\"\">Hello App!</span>{{myNum}}\n\t\t<span style=\"margin-left:200px;\" _v-68dead14=\"\">\n\t\t\t<span v-if=\"langId == 1\" @click=\"toChangeLang(0)\" _v-68dead14=\"\">中文</span>\n\t\t\t<span v-else=\"\" @click=\"toChangeLang(1)\" _v-68dead14=\"\">English</span>\n\t\t</span>\n\t</h1>\n\t\n\t<p _v-68dead14=\"\">  \n\t\t<a v-link=\"{ path: '/home' }\" _v-68dead14=\"\">{{lang.home_page}}</a>  \n\t\t<a v-link=\"{ path: '/about' }\" _v-68dead14=\"\">{{lang.about_page}}</a>\n\n\t</p> \n</div>\n";
 
 /***/ },
 /* 19 */
@@ -14509,7 +14537,7 @@
 	var content = __webpack_require__(21);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
+	var update = __webpack_require__(15)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -14529,12 +14557,12 @@
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(12)();
+	exports = module.exports = __webpack_require__(14)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.border-box[_v-76ccfda5]{\r\n\tbox-sizing: border-box;\r\n}\r\n.alert-main[_v-76ccfda5]{\r\n\tposition: fixed;\r\n\twidth:100%;\r\n\theight: 100%;\r\n\ttop:0;\r\n\tleft:0;\r\n\tbackground-color: rgba(0,0,0,0.4);\r\n\tz-index: 2;\r\n}\r\n.alert-main-div[_v-76ccfda5]{\r\n\tposition: absolute;\r\n\twidth:200px;\r\n\ttop:50%;\r\n\tleft:50%;\r\n\t-webkit-transform:translate(-50%,-50%);\r\n\t        transform:translate(-50%,-50%);\r\n\tbackground-color: blue;\r\n\tborder-radius: 8px;\r\n\tpadding:20px 30px;\r\n\tz-index: 3;\r\n}\r\n.width100[_v-76ccfda5]{\r\n\twidth:100%;\r\n}\r\n.width40[_v-76ccfda5]{\r\n\twidth:40%;\r\n}\r\n.lefted[_v-76ccfda5]{\r\n\tfloat: left;\r\n}\r\n.righted[_v-76ccfda5]{\r\n\tfloat: right;\r\n}\r\n.btn[_v-76ccfda5]{\r\n\tline-height: 34px;\r\n\tfont-size: 18px;\r\n\toutline: none;\r\n\tborder:none;\r\n\tbackground-color: red;\r\n\tcolor:#fff;\r\n\ttext-align: center;\r\n\tcursor: pointer;\r\n\tpadding:0;\r\n\topacity: 0.85;\r\n\tborder-radius: 10px;\r\n}\r\n.btn[_v-76ccfda5]:hover{\r\n\topacity: 1;\r\n}\r\n.alert-button-group[_v-76ccfda5]{\r\n\tmargin-top: 10px;\r\n}\r\n", ""]);
+	exports.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n.border-box[_v-76ccfda5]{\r\n\tbox-sizing: border-box;\r\n}\r\n.alert-main[_v-76ccfda5]{\r\n\tposition: fixed;\r\n\twidth:100%;\r\n\theight: 100%;\r\n\ttop:0;\r\n\tleft:0;\r\n\tbackground-color: rgba(0,0,0,0.4);\r\n\tz-index: 2;\r\n}\r\n.alert-main-div[_v-76ccfda5]{\r\n\tposition: absolute;\r\n\twidth:300px;\r\n\ttop:50%;\r\n\tleft:50%;\r\n\t-webkit-transform:translate(-50%,-50%);\r\n\t        transform:translate(-50%,-50%);\r\n\tbackground-color: blue;\r\n\tborder-radius: 8px;\r\n\tpadding:20px 30px;\r\n\tz-index: 3;\r\n}\r\n.width100[_v-76ccfda5]{\r\n\twidth:100%;\r\n}\r\n.width40[_v-76ccfda5]{\r\n\twidth:40%;\r\n}\r\n.lefted[_v-76ccfda5]{\r\n\tfloat: left;\r\n}\r\n.righted[_v-76ccfda5]{\r\n\tfloat: right;\r\n}\r\n.btn[_v-76ccfda5]{\r\n\tline-height: 34px;\r\n\tfont-size: 18px;\r\n\toutline: none;\r\n\tborder:none;\r\n\tbackground-color: red;\r\n\tcolor:#fff;\r\n\ttext-align: center;\r\n\tcursor: pointer;\r\n\tpadding:0;\r\n\topacity: 0.85;\r\n\tborder-radius: 10px;\r\n}\r\n.btn[_v-76ccfda5]:hover{\r\n\topacity: 1;\r\n}\r\n.alert-button-group[_v-76ccfda5]{\r\n\tmargin-top: 10px;\r\n}\r\n.alert-double-button[_v-76ccfda5]{\r\n\toverflow: hidden;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -14543,7 +14571,7 @@
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -14554,22 +14582,27 @@
 	exports.default = {
 		vuex: {
 			getters: {
-				show: function show(_ref) {
-					var ui = _ref.ui;
+				langId: function langId(_ref) {
+					var lang = _ref.lang;
+					return lang.langId;
+				},
+				show: function show(_ref2) {
+					var ui = _ref2.ui;
 					return ui.alert;
 				},
-				alertText: function alertText(_ref2) {
-					var ui = _ref2.ui;
+				alertText: function alertText(_ref3) {
+					var ui = _ref3.ui;
 					return ui.alertText;
 				},
-				alertType: function alertType(_ref3) {
-					var ui = _ref3.ui;
+				alertType: function alertType(_ref4) {
+					var ui = _ref4.ui;
 					return ui.alertType;
 				},
-				alertDealEvent: function alertDealEvent(_ref4) {
-					var ui = _ref4.ui;
+				alertDealEvent: function alertDealEvent(_ref5) {
+					var ui = _ref5.ui;
 					return ui.alertDealEvent;
 				}
+
 			},
 			actions: {
 				changeAlert: _uiAction.changeAlert
@@ -14579,6 +14612,17 @@
 			return {};
 		},
 
+		computed: {
+			'alertLangText': function alertLangText() {
+				if (typeof this.alertText == 'string') {
+					return this.alertText;
+				} else if (this.langId == 0) {
+					return this.alertText ? this.alertText.zh : null;
+				} else if (this.langId == 1) {
+					return this.alertText ? this.alertText.en : null;
+				}
+			}
+		},
 		methods: {
 			cancelEvent: function cancelEvent() {
 				this.changeAlert(false);
@@ -14594,15 +14638,18 @@
 	// 	<div class="alert-main" v-if="show">
 	// 		<div class="alert-main-div border-box">
 	// 			<div>
-	// 				{{alertText}}
+	// 				{{alertLangText}}
 	// 			</div>
 	// 			<div class="alert-button-group">
 	// 				<div class="alert-single-button" v-if="alertType == 'single'">
-	// 					<button class="btn width100" @click="cancelEvent">确定</button>
+	// 					<button v-if="langId == 0" class="btn width100" @click="cancelEvent">确定</button>
+	// 					<button v-else class="btn width100" @click="cancelEvent">Confirm</button>
 	// 				</div>
 	// 				<div class="alert-double-button" v-if="alertType == 'double'">
-	// 					<button class="btn width40 lefted" @click="confirmEvent">确定</button>
-	// 					<button class="btn width40 righted" @click="cancelEvent">取消</button>
+	// 					<button v-if="langId == 0" class="btn width40 lefted" @click="confirmEvent">确定</button>
+	// 					<button v-else class="btn width40 lefted" @click="confirmEvent">Confirm</button>
+	// 					<button v-if="langId == 0" class="btn width40 righted" @click="cancelEvent">取消</button>
+	// 					<button v-else class="btn width40 righted" @click="cancelEvent">Cancel</button>
 	// 				</div>
 	// 			</div>
 	// 		</div>
@@ -14623,7 +14670,7 @@
 	// }
 	// .alert-main-div{
 	// 	position: absolute;
-	// 	width:200px;
+	// 	width:300px;
 	// 	top:50%;
 	// 	left:50%;
 	// 	transform:translate(-50%,-50%);
@@ -14663,6 +14710,9 @@
 	// .alert-button-group{
 	// 	margin-top: 10px;
 	// }
+	// .alert-double-button{
+	// 	overflow: hidden;
+	// }
 	// </style>
 	// <script>
 
@@ -14684,7 +14734,7 @@
 /* 24 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"alert-main\" v-if=\"show\" _v-76ccfda5=\"\">\n\t<div class=\"alert-main-div border-box\" _v-76ccfda5=\"\">\n\t\t<div _v-76ccfda5=\"\">\n\t\t\t{{alertText}}\n\t\t</div>\n\t\t<div class=\"alert-button-group\" _v-76ccfda5=\"\">\n\t\t\t<div class=\"alert-single-button\" v-if=\"alertType == 'single'\" _v-76ccfda5=\"\">\n\t\t\t\t<button class=\"btn width100\" @click=\"cancelEvent\" _v-76ccfda5=\"\">确定</button>\n\t\t\t</div>\n\t\t\t<div class=\"alert-double-button\" v-if=\"alertType == 'double'\" _v-76ccfda5=\"\">\n\t\t\t\t<button class=\"btn width40 lefted\" @click=\"confirmEvent\" _v-76ccfda5=\"\">确定</button>\n\t\t\t\t<button class=\"btn width40 righted\" @click=\"cancelEvent\" _v-76ccfda5=\"\">取消</button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"alert-main\" v-if=\"show\" _v-76ccfda5=\"\">\n\t<div class=\"alert-main-div border-box\" _v-76ccfda5=\"\">\n\t\t<div _v-76ccfda5=\"\">\n\t\t\t{{alertLangText}}\n\t\t</div>\n\t\t<div class=\"alert-button-group\" _v-76ccfda5=\"\">\n\t\t\t<div class=\"alert-single-button\" v-if=\"alertType == 'single'\" _v-76ccfda5=\"\">\n\t\t\t\t<button v-if=\"langId == 0\" class=\"btn width100\" @click=\"cancelEvent\" _v-76ccfda5=\"\">确定</button>\n\t\t\t\t<button v-else=\"\" class=\"btn width100\" @click=\"cancelEvent\" _v-76ccfda5=\"\">Confirm</button>\n\t\t\t</div>\n\t\t\t<div class=\"alert-double-button\" v-if=\"alertType == 'double'\" _v-76ccfda5=\"\">\n\t\t\t\t<button v-if=\"langId == 0\" class=\"btn width40 lefted\" @click=\"confirmEvent\" _v-76ccfda5=\"\">确定</button>\n\t\t\t\t<button v-else=\"\" class=\"btn width40 lefted\" @click=\"confirmEvent\" _v-76ccfda5=\"\">Confirm</button>\n\t\t\t\t<button v-if=\"langId == 0\" class=\"btn width40 righted\" @click=\"cancelEvent\" _v-76ccfda5=\"\">取消</button>\n\t\t\t\t<button v-else=\"\" class=\"btn width40 righted\" @click=\"cancelEvent\" _v-76ccfda5=\"\">Cancel</button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 25 */
@@ -14698,7 +14748,12 @@
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_template__ = __webpack_require__(27)
+	__vue_script__ = __webpack_require__(27)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\index.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(28)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14726,20 +14781,46 @@
 /* 27 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div>这是默认的首页</div>\n";
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>
+	// 	<div>{{lang.index_page}}</div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+		vuex: {
+			getters: {
+				lang: function lang(_ref) {
+					var _lang = _ref.lang;
+					return _lang.lang;
+				}
+			}
+		}
+	};
+	// </script>
 
 /***/ },
 /* 28 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div>{{lang.index_page}}</div>\n";
+
+/***/ },
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(29)
+	__vue_script__ = __webpack_require__(30)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\about.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(34)
+	__vue_template__ = __webpack_require__(35)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14764,7 +14845,7 @@
 	})()}
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -14774,31 +14855,38 @@
 	});
 	// <template>
 	// <div>
-	// 	<div>这是about页面</div>
-	// 	<div>这里有个计数器</div>
+	// 	<div>{{lang.about_page_title}}</div>
+	// 	<div>{{lang.about_calc}}</div>
 	// 	<click></click>
 	// </div>
 	// </template>
 	// <script>
 	exports.default = {
+		vuex: {
+			getters: {
+				lang: function lang(_lang) {
+					return _lang.lang.lang;
+				}
+			}
+		},
 		components: {
-			'click': __webpack_require__(30)
+			'click': __webpack_require__(31)
 		}
 	};
 	// </script>
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(31)
+	__vue_script__ = __webpack_require__(32)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\click.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(33)
+	__vue_template__ = __webpack_require__(34)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14823,7 +14911,7 @@
 	})()}
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14832,7 +14920,7 @@
 		value: true
 	});
 
-	var _clickAction = __webpack_require__(32);
+	var _clickAction = __webpack_require__(33);
 
 	exports.default = {
 		vuex: {
@@ -14853,7 +14941,7 @@
 	// <script>
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14874,30 +14962,30 @@
 	};
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	module.exports = "\r\n<div class=\"click-main\">\r\n\t<button @click=\"addAction\">+</button>\r\n\t<button @click=\"subAction\">-</button>\r\n</div>\r\n";
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<div>\r\n\t<div>这是about页面</div>\r\n\t<div>这里有个计数器</div>\r\n\t<click></click>\r\n</div>\r\n";
+	module.exports = "\r\n<div>\r\n\t<div>{{lang.about_page_title}}</div>\r\n\t<div>{{lang.about_calc}}</div>\r\n\t<click></click>\r\n</div>\r\n";
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(36)
-	__vue_script__ = __webpack_require__(38)
+	__webpack_require__(37)
+	__vue_script__ = __webpack_require__(39)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\home.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(39)
+	__vue_template__ = __webpack_require__(40)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14922,16 +15010,16 @@
 	})()}
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(37);
+	var content = __webpack_require__(38);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
+	var update = __webpack_require__(15)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -14948,10 +15036,10 @@
 	}
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(12)();
+	exports = module.exports = __webpack_require__(14)();
 	// imports
 
 
@@ -14962,7 +15050,7 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -14981,9 +15069,9 @@
 
 	// <template>
 	// <div>
-	// 	<div>这是home页面</div><br>
+	// 	<div>{{lang.home_page_title}}</div><br>
 	// 	<input type="text" v-model="pageNum" />
-	// 	<button @click="checkNum">去page页面</button>
+	// 	<button @click="checkNum">{{lang.home_to_page}}</button>
 	// </div>
 	// </template>
 	// <style scoped>
@@ -14994,6 +15082,12 @@
 	// <script>
 	exports.default = {
 		vuex: {
+			getters: {
+				lang: function lang(_ref) {
+					var _lang = _ref.lang;
+					return _lang.lang;
+				}
+			},
 			actions: {
 				changeAlert: _uiAction.changeAlert
 			}
@@ -15006,12 +15100,10 @@
 
 		methods: {
 			checkNum: function checkNum() {
-				var self = this;
-
-				if (isNaN(self.pageNum) || self.pageNum <= 0) {
-					self.changeAlert(true, "请填写准确数字");
+				if (isNaN(this.pageNum) || this.pageNum <= 0) {
+					this.changeAlert(true, { zh: "请填写准确数字", en: 'Please write true number' });
 				} else {
-					self.changeAlert(true, "将去到page页面?", "double", self.toPage);
+					this.changeAlert(true, { zh: "将去到page页面?", en: 'Will go to Page page?' }, "double", this.toPage);
 				}
 			},
 			toPage: function toPage() {
@@ -15023,23 +15115,23 @@
 	// </script>
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div _v-2baa1626=\"\">\n\t<div _v-2baa1626=\"\">这是home页面</div><br _v-2baa1626=\"\">\n\t<input type=\"text\" v-model=\"pageNum\" _v-2baa1626=\"\">\n\t<button @click=\"checkNum\" _v-2baa1626=\"\">去page页面</button>\n</div>\n";
+	module.exports = "\n<div _v-2baa1626=\"\">\n\t<div _v-2baa1626=\"\">{{lang.home_page_title}}</div><br _v-2baa1626=\"\">\n\t<input type=\"text\" v-model=\"pageNum\" _v-2baa1626=\"\">\n\t<button @click=\"checkNum\" _v-2baa1626=\"\">{{lang.home_to_page}}</button>\n</div>\n";
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(41)
+	__vue_script__ = __webpack_require__(42)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\page.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(42)
+	__vue_template__ = __webpack_require__(43)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15064,7 +15156,7 @@
 	})()}
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15077,6 +15169,12 @@
 
 	exports.default = {
 		vuex: {
+			getters: {
+				lang: function lang(_ref) {
+					var _lang = _ref.lang;
+					return _lang.lang;
+				}
+			},
 			actions: {
 				changeAlert: _uiAction.changeAlert
 			}
@@ -15088,12 +15186,10 @@
 		},
 
 		route: {
-			data: function data(_ref) {
-				var num = _ref.to.query.num;
+			data: function data(_ref2) {
+				var num = _ref2.to.query.num;
 
-				var self = this;
-
-				self.$set('pageNum', num);
+				this.$set('pageNum', num);
 			}
 		},
 		methods: {
@@ -15104,16 +15200,16 @@
 	};
 	// </script>
 	// <template>
-	// 	<div>page页面的参数：<span @click="alert">{{pageNum}}</span></div>
+	// 	<div>{{lang.page_page}}<span @click="alert">{{pageNum}}</span></div>
 	// </template>
 	//
 	// <script>
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div>page页面的参数：<span @click=\"alert\">{{pageNum}}</span></div>\n";
+	module.exports = "\n<div>{{lang.page_page}}<span @click=\"alert\">{{pageNum}}</span></div>\n";
 
 /***/ }
 /******/ ]);

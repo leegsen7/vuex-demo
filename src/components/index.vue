@@ -1,3 +1,13 @@
 <template>
-	<div>这是默认的首页</div>
+	<div>{{lang.index_page}}</div>
 </template>
+
+<script>
+export default {
+	vuex:{
+		getters:{
+			lang:({lang}) => lang.lang
+		}
+	}
+}
+</script>

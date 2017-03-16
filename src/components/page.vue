@@ -1,5 +1,5 @@
 <template>
-	<div>page页面的参数：<span @click="alert">{{pageNum}}</span></div>
+	<div>{{lang.page_page}}<span @click="alert">{{pageNum}}</span></div>
 </template>
 
 <script>
@@ -7,6 +7,9 @@ import {changeAlert} from "../action/uiAction";
 
 export default{
 	vuex:{
+		getters:{
+			lang:({lang}) => lang.lang
+		},
 		actions:{
 			changeAlert
 		}
@@ -17,10 +20,8 @@ export default{
 		}
 	},
 	route:{
-		data({ to: { query: { num }}}){
-			let self = this;
-			
-			self.$set('pageNum',num);
+		data({ to: { query: { num }}}){			
+			this.$set('pageNum',num);
 		}	
 	},
 	methods:{
